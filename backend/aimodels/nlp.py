@@ -32,19 +32,28 @@ class ContentModerationModel:
     def preprocess_text(self, text):
         # Tokenize and preprocess the text using the spaCy model
         doc = self.nlp(text)
+        
+        # Debugging: Print original tokens and lemmatized forms
+        tokens_and_lemmas = [(token.text, token.lemma_) for token in doc]
+        print("Original Tokens and Lemmas:", tokens_and_lemmas)
+
         tokens = [token.lemma_ for token in doc if token.is_alpha and not token.is_stop]
-        return " ".join(tokens)
+        return "".join(tokens)
 
     def predict(self, text):
         # Preprocess the text
         preprocessed_text = self.preprocess_text(text)
 
+        # Debugging: Print the preprocessed text
+        print("Preprocessed Text:", preprocessed_text)
+
         # Check if the text is too short
         if len(preprocessed_text.split()) < 8:
             return "Rejected content: Text is too short"
 
-        # Check for the presence of accepted keywords
-        if any(keyword in preprocessed_text for keyword in self.accepted_keywords):
+        # Check for the presence of at least 7 accepted keywords
+        count_keywords = sum(keyword in preprocessed_text for keyword in self.accepted_keywords)
+        if count_keywords >= 7:
             return "Accepted content"
         else:
-            return "Rejected content: Does not contain accepted keywords"
+            return "Rejected content: Does not contain enough accepted keywords"
