@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/shared/components.dart';
-import 'package:scroll_snap_list/scroll_snap_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key});
