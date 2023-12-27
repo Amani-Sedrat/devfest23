@@ -87,6 +87,8 @@ ALTER TABLE `user`
 
 --
 -- Constraints for table `post`
+
+
 --
 ALTER TABLE `post`
   ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
