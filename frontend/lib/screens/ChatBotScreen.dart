@@ -6,7 +6,7 @@ import '../models/Chat.dart';
 import 'package:bubble/bubble.dart';
 
 
-const apiSecretKey = 'write your secret key here, you can get it from openai';
+const apiSecretKey = 'sk-3b2b2-4d3b2-9b2b2-3b2b2-4d3b2';
 
 const backgroundColor = Color(0xff092941);
 const botBackgroundColor = Color(0xff00FFE2);
